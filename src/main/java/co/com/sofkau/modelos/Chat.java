@@ -1,5 +1,7 @@
 package co.com.sofkau.modelos;
 
+import java.util.Locale;
+
 public class Chat {
     private String chat;
 
@@ -15,8 +17,8 @@ public class Chat {
         this.chat = chat;
     }
 
-    public void transformarAPalabraCorrecta(String chat){
-        this.chat = this.chat.toUpperCase();
+    public void transformarMalasPalabras(String chat){
+        this.chat = this.chat.toLowerCase();
         this.chat = this.chat.replace(chat, "****");
     }
 
