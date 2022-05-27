@@ -76,15 +76,15 @@ public class PredojoApplication implements CommandLineRunner {
 	}
 
 	public void usandoOperadorFilter(List<Correos> emails) {
-		// Agrupando Correos Por Dominio Y Contandolos (Los no-válidos se toman en cuenta como dominios distintos)
+		// Filtrando correos que no sean validos (Si no se realiza el filtro, los correos invalidos se toman como un dominio diferente)
 		List<Correos> emailsParaFilter = emails.stream().filter(email -> email.getDominio().equals("gmail.com") || email.getDominio().equals("hotmail.com") || email.getDominio().equals("outlook.com")).collect(Collectors.toList());
 
 		Flux.fromIterable(emailsParaFilter)
 				.groupBy(Correos::getDominio)
 				.flatMap(Flux::collectList)
 				.subscribe(email -> {
-					System.out.println("Correos" + email);
-					System.out.println("Cantidad" + email.size());
+					System.out.println("\nCorreos con dominio " + email.get(0).getDominio() + ": " + email);
+					System.out.println("Cantidad de correos con domino " + email.get(0).getDominio() + ": " + email.size());
 				});
 	}
 
