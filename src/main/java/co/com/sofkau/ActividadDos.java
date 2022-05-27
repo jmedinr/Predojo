@@ -1,12 +1,10 @@
 package co.com.sofkau;
 
 import co.com.sofkau.modelos.Chat;
-import co.com.sofkau.modelos.MalasPalabras;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import reactor.core.publisher.Flux;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,14 +16,14 @@ public class ActividadDos implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<MalasPalabras> malasPalabras = generarListaMalasPalabras();
+        List<String> malasPalabras = generarListaMalasPalabras();
         List<Chat> chat = generadorDeChat();
 
         Flux.fromIterable(chat)
                 .map(mensaje -> {
                     malasPalabras.forEach(palabra -> {
-                        if (mensaje.getChat().toLowerCase().contains(palabra.getMalaPalabra().toLowerCase())) {
-                            mensaje.transformarMalasPalabras(palabra.getMalaPalabra().toLowerCase());
+                        if (mensaje.getChat().toLowerCase().contains(palabra.toLowerCase())) {
+                            mensaje.transformarMalasPalabras(palabra.toLowerCase());
                         }
                     });
 
@@ -34,19 +32,19 @@ public class ActividadDos implements CommandLineRunner {
                 .subscribe(mensaje -> System.out.println("Mensaje: " + mensaje));
      }
 
-    public List<MalasPalabras> generarListaMalasPalabras() {
-        List<MalasPalabras> malasPalabras = new ArrayList<>();
+    public List<String> generarListaMalasPalabras() {
+        List<String> malasPalabras = new ArrayList<>();
 
-        malasPalabras.add(new MalasPalabras("pirobo"));
-        malasPalabras.add(new MalasPalabras("gonorrea"));
-        malasPalabras.add(new MalasPalabras("hijueputa"));
-        malasPalabras.add(new MalasPalabras("puta"));
-        malasPalabras.add(new MalasPalabras("perra"));
-        malasPalabras.add(new MalasPalabras("perro"));
-        malasPalabras.add(new MalasPalabras("marica"));
-        malasPalabras.add(new MalasPalabras("maricón"));
-        malasPalabras.add(new MalasPalabras("maricona"));
-        malasPalabras.add(new MalasPalabras("mariconazo"));
+        malasPalabras.add("pirobo");
+        malasPalabras.add("gonorrea");
+        malasPalabras.add("hijueputa");
+        malasPalabras.add("puta");
+        malasPalabras.add("perra");
+        malasPalabras.add("perro");
+        malasPalabras.add("marica");
+        malasPalabras.add("maricón");
+        malasPalabras.add("maricona");
+        malasPalabras.add("mariconazo");
 
         return malasPalabras;
     }

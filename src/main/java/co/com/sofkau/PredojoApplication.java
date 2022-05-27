@@ -122,6 +122,7 @@ public class PredojoApplication implements CommandLineRunner {
 		usandoOperadorMap(emails);
 
 		// Ejecutando La Actividad Dos
+		System.out.println("\n\nEjecutando La Actividad Dos");
 		ActividadDos actividadDos = new ActividadDos();
 		actividadDos.run(args);
 	}

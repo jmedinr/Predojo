@@ -49,6 +49,6 @@ public class Chat {
 
     @Override
     public String toString() {
-        return "Chat " + chat;
+        return chat;
     }
 }
