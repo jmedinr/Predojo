@@ -107,7 +107,7 @@ public class PredojoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		/* List<Correos> emails = generadorDeCorreos();
+		List<Correos> emails = generadorDeCorreos();
 
 		System.out.println("\n\nEliminando Correos Repetidos Y Contandolos");
 		Mono<List<Correos>> emailsDistinct = usandoOperadorDistinct(emails);
@@ -119,7 +119,7 @@ public class PredojoApplication implements CommandLineRunner {
 		usandoOperadorFilter(emailsDistinct.block());
 
 		System.out.println("\n\nMostrando Correos Validos Y No Validos");
-		usandoOperadorMap(emails); */
+		usandoOperadorMap(emails);
 
 		// Ejecutando La Actividad Dos
 		ActividadDos actividadDos = new ActividadDos();
